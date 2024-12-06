@@ -7,15 +7,16 @@
 
 import Foundation
 import CoreLocation
+import Combine
 
 
 open class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
     
-    @Published var lastKnownLocation: CLLocationCoordinate2D?
+    @Published open var lastKnownLocation: CLLocationCoordinate2D?
     var manager = CLLocationManager()
     
     
-    func checkLocationAuthorization() {
+    open func checkLocationAuthorization() {
         
         manager.delegate = self
         manager.startUpdatingLocation()
@@ -43,11 +44,11 @@ open class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObjec
         }
     }
     
-    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {//Trigged every time authorization status changes
+    public func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {//Trigged every time authorization status changes
         checkLocationAuthorization()
     }
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+   public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         lastKnownLocation = locations.first?.coordinate
     }
 }
