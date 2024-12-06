@@ -8,38 +8,48 @@
 import Foundation
 import CoreLocation
 
-open class LocationManager: NSObject, CLLocationManagerDelegate {
-    private let locationManager = CLLocationManager()
-    private var completion: ((CLLocation?) -> Void)?
 
-    override public init() {
-        super.init()
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-    }
-
-    public func requestLocationAuthorization() {
-        locationManager.requestWhenInUseAuthorization()
-    }
-
-    open func getCurrentLocation(completion: @escaping (CLLocation?) -> Void) {
-        self.completion = completion
-        locationManager.requestLocation()
-    }
-
-    // CLLocationManagerDelegate Methods
-    open func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location = locations.last else {
-            completion?(nil)
-            return
+open class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
+    
+    @Published var lastKnownLocation: CLLocationCoordinate2D?
+    var manager = CLLocationManager()
+    
+    
+    func checkLocationAuthorization() {
+        
+        manager.delegate = self
+        manager.startUpdatingLocation()
+        
+        switch manager.authorizationStatus {
+        case .notDetermined://The user choose allow or denny your app to get the location yet
+            manager.requestWhenInUseAuthorization()
+            
+        case .restricted://The user cannot change this app’s status, possibly due to active restrictions such as parental controls being in place.
+            print("Location restricted")
+            
+        case .denied://The user dennied your app to get location or disabled the services location or the phone is in airplane mode
+            print("Location denied")
+            
+        case .authorizedAlways://This authorization allows you to use all location services and receive location events whether or not your app is in use.
+            print("Location authorizedAlways")
+            
+        case .authorizedWhenInUse://This authorization allows you to use all location services and receive location events only when your app is in use
+            print("Location authorized when in use")
+            lastKnownLocation = manager.location?.coordinate
+            
+        @unknown default:
+            print("Location service disabled")
+        
         }
-        completion?(location)
-        self.completion = nil // Tamamlandiktan sonra closure temizle
     }
-
-    public func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Location Not Found: \(error.localizedDescription)")
-        completion?(nil)
-        self.completion = nil // Hata durumunda da closure temizle
+    
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {//Trigged every time authorization status changes
+        checkLocationAuthorization()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        lastKnownLocation = locations.first?.coordinate
     }
 }
+
+

@@ -126,10 +126,10 @@
             filePath = "GeofenceTriggerTests/GeofenceTriggerTests.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
-            landmarkName = "testCurrentLocation2()"
-            landmarkType = "7">
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "GeofenceTriggerTests"
+            landmarkType = "3">
             <Locations>
                <Location
                   uuid = "EC19CCA8-4028-4C23-8555-A3C4668BFC03 - 4ea77dd2167290ac"
@@ -218,10 +218,10 @@
             filePath = "GeofenceTriggerTests/GeofenceTriggerTests.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
-            landmarkName = "testCurrentLocation2()"
-            landmarkType = "7">
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "GeofenceTriggerTests"
+            landmarkType = "3">
             <Locations>
                <Location
                   uuid = "EF3D6014-9639-4085-A801-08DCCC0B8978 - 75a7f4f2285289d6"

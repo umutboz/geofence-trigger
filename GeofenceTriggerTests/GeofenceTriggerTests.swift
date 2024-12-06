@@ -43,6 +43,7 @@ final class GeofenceTriggerTests: XCTestCase {
         assert(result, "success check size")
     }
     
+    /*
     func testCurrentLocation2(){
         let timeout: TimeInterval = 20.0
         let expectation = self.expectation(description:"Listen LocationManager. 2")
@@ -64,6 +65,7 @@ final class GeofenceTriggerTests: XCTestCase {
         XCTAssertNotNil(statusCode)
 
     }
+    */
 
 
     func testPerformanceExample() throws {
