@@ -26,30 +26,30 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		44D3E36A2D032B3B00C5EFAF /* Exceptions for "GeofenceTrigger" folder in "GeofenceTrigger" target */ = {
+		44D3E3C82D03938700C5EFAF /* Exceptions for "Sources" folder in "GeofenceTrigger" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Info.plist,
+				GeofenceTrigger/Info.plist,
 			);
 			publicHeaders = (
-				GeofenceTrigger.h,
+				GeofenceTrigger/GeofenceTrigger.h,
 			);
 			target = 44D3E3572D032B3B00C5EFAF /* GeofenceTrigger */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		44D3E35A2D032B3B00C5EFAF /* GeofenceTrigger */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				44D3E36A2D032B3B00C5EFAF /* Exceptions for "GeofenceTrigger" folder in "GeofenceTrigger" target */,
-			);
-			path = GeofenceTrigger;
-			sourceTree = "<group>";
-		};
 		44D3E3662D032B3B00C5EFAF /* GeofenceTriggerTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = GeofenceTriggerTests;
+			sourceTree = "<group>";
+		};
+		44D3E3BF2D03937C00C5EFAF /* Sources */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				44D3E3C82D03938700C5EFAF /* Exceptions for "Sources" folder in "GeofenceTrigger" target */,
+			);
+			path = Sources;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -76,7 +76,7 @@
 		44D3E34E2D032B3B00C5EFAF = {
 			isa = PBXGroup;
 			children = (
-				44D3E35A2D032B3B00C5EFAF /* GeofenceTrigger */,
+				44D3E3BF2D03937C00C5EFAF /* Sources */,
 				44D3E3662D032B3B00C5EFAF /* GeofenceTriggerTests */,
 				44D3E3592D032B3B00C5EFAF /* Products */,
 			);
@@ -118,7 +118,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				44D3E35A2D032B3B00C5EFAF /* GeofenceTrigger */,
+				44D3E3BF2D03937C00C5EFAF /* Sources */,
 			);
 			name = GeofenceTrigger;
 			packageProductDependencies = (
@@ -244,7 +244,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_MODULE_VERIFIER = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = GeofenceTrigger/Info.plist;
+				INFOPLIST_FILE = Sources/GeofenceTrigger/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Permission is required for background location tracking.";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Permission is required to track location changes.";
@@ -283,7 +283,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_MODULE_VERIFIER = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = GeofenceTrigger/Info.plist;
+				INFOPLIST_FILE = Sources/GeofenceTrigger/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Permission is required for background location tracking.";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Permission is required to track location changes.";

@@ -6,3 +6,6 @@
 //
 
 import Foundation
+public struct GeofenceConfig: Sendable{
+    var fixedSize : Int = 5
+}

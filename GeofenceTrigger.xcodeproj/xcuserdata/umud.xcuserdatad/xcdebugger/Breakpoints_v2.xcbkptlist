@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "D6EB7FF3-0A8F-44A1-BFE9-7B8D80338FF6"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4081AA22-3D7A-4609-8957-F4F215475E48"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sources/GeofenceTrigger/GeofenceManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "checkSize(size:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "49F5C009-4FF6-4367-B3D8-F7C4B86DE5C3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GeofenceTriggerTests/GeofenceTriggerTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "testConfigCheckFixedSize()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3C2A4B49-30F8-404C-98F9-0166E6978787"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GeofenceTriggerTests/GeofenceTriggerTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "testConfigCheckFixedSize()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E7ED9B1E-C807-440D-8F35-26FC08581DA3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sources/GeofenceTrigger/Geofence.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "workingStatus()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5D54BF14-73DB-4DAD-9C6F-86046DFCE46F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GeofenceTriggerTests/GeofenceTriggerTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "testStartGeofenceMonitoring()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D8C00F93-5CF1-4BDE-A372-29F71F34BB7B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sources/GeofenceTrigger/Geofence.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "startGeofenceMonitoring(locations:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BB0F4C22-6EBA-4E74-AAA9-E8364B94FEB7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sources/GeofenceTrigger/GeofenceManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "currentLocation(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EC19CCA8-4028-4C23-8555-A3C4668BFC03"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GeofenceTriggerTests/GeofenceTriggerTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "testCurrentLocation2()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "EC19CCA8-4028-4C23-8555-A3C4668BFC03 - 4ea77dd2167290ac"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GeofenceTriggerTests.GeofenceTriggerTests.testCurrentLocation2() -&gt; ()"
+                  moduleName = "GeofenceTriggerTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/umud/Desktop/coding/geofence/GeofenceTrigger/GeofenceTriggerTests/GeofenceTriggerTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53">
+               </Location>
+               <Location
+                  uuid = "EC19CCA8-4028-4C23-8555-A3C4668BFC03 - 75a7f4f228528979"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.CLLocation&gt;) -&gt; () in GeofenceTriggerTests.GeofenceTriggerTests.testCurrentLocation2() -&gt; ()"
+                  moduleName = "GeofenceTriggerTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/umud/Desktop/coding/geofence/GeofenceTrigger/GeofenceTriggerTests/GeofenceTriggerTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "51"
+                  endingLineNumber = "51">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C842A1CE-EFCF-4737-8E72-58FEC98F7503"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sources/GeofenceTrigger/GeofenceManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "currentLocation(completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C842A1CE-EFCF-4737-8E72-58FEC98F7503 - 20d0906f536aa7e5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GeofenceTrigger.GeofenceManager.currentLocation(completion: (Swift.Optional&lt;__C.CLLocation&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "GeofenceTrigger"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/umud/Desktop/coding/geofence/GeofenceTrigger/Sources/GeofenceTrigger/GeofenceManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "37"
+                  endingLineNumber = "37">
+               </Location>
+               <Location
+                  uuid = "C842A1CE-EFCF-4737-8E72-58FEC98F7503 - e59c11eea118982d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in GeofenceTrigger.GeofenceManager.currentLocation(completion: (Swift.Optional&lt;__C.CLLocation&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "GeofenceTrigger"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/umud/Desktop/coding/geofence/GeofenceTrigger/Sources/GeofenceTrigger/GeofenceManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "37"
+                  endingLineNumber = "37">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EF3D6014-9639-4085-A801-08DCCC0B8978"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GeofenceTriggerTests/GeofenceTriggerTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "testCurrentLocation2()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "EF3D6014-9639-4085-A801-08DCCC0B8978 - 75a7f4f2285289d6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.CLLocation&gt;) -&gt; () in GeofenceTriggerTests.GeofenceTriggerTests.testCurrentLocation2() -&gt; ()"
+                  moduleName = "GeofenceTriggerTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/umud/Desktop/coding/geofence/GeofenceTrigger/GeofenceTriggerTests/GeofenceTriggerTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "54"
+                  endingLineNumber = "54">
+               </Location>
+               <Location
+                  uuid = "EF3D6014-9639-4085-A801-08DCCC0B8978 - 75a7f4f2285289d6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.CLLocation&gt;) -&gt; () in GeofenceTriggerTests.GeofenceTriggerTests.testCurrentLocation2() -&gt; ()"
+                  moduleName = "GeofenceTriggerTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/umud/Desktop/coding/geofence/GeofenceTrigger/GeofenceTriggerTests/GeofenceTriggerTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "54"
+                  endingLineNumber = "54">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
