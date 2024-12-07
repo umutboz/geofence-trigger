@@ -15,10 +15,12 @@ public class GeofenceManager: NSObject, CLLocationManagerDelegate {
 
     public override init() {
         super.init()
-        locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
+        //arka plan calismas icin aktif edildi
+        locationManager.allowsBackgroundLocationUpdates = true
+        locationManager.pausesLocationUpdatesAutomatically = false
     }
-    
+    /// Geofence size kontrol eder.
     public func checkSize(size: Int) -> Bool{
         if size == self.config.fixedSize{
             return true
@@ -29,7 +31,7 @@ public class GeofenceManager: NSObject, CLLocationManagerDelegate {
         return self.regions.count == self.config.fixedSize
     }
     
-    
+    /// Mevcut konumu doner.
     public func currentLocation(completion: @escaping (CLLocation?) -> Void) {
         locationManager.requestLocation()
         locationManager.delegate = self
@@ -43,8 +45,9 @@ public class GeofenceManager: NSObject, CLLocationManagerDelegate {
             completion(self.locationManager.location)
         }
     }
-
+    /// Belirtilen konumlar icin Geofence izlemeyi baslatir.
     public func startGeofenceMonitoring(locations: [LocationData]) {
+        guard checkSize(size: locations.count) else { return }
         for location in locations {
             let region = CLCircularRegion(
                 center: CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude),
@@ -57,32 +60,30 @@ public class GeofenceManager: NSObject, CLLocationManagerDelegate {
             locationManager.startMonitoring(for: region)
         }
     }
-    // enter Area ve notification gonderimi
-    // exit Area ve notification gonderimi
+    
+    /// Geofence bolgesi giris/cikis olaylarını işler.
     public func handleRegionEvent(region: CLRegion, didEnter: Bool) {
-        // Region identifier'ı al
+        // Region identifier'i al
         let locationName = region.identifier
         // Durumu belirle
         let status = didEnter ? "Enter" : "Exit"
-        // Bildirim gönder
+        // Bildirim gonder
         NotificationManager.shared.sendNotification(locationName: locationName, status: status)
     }
-
-    /*
-    // enter Area ve notification gonderimi
+    
+    /// cikis area
     public func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
-        if let circularRegion = region as? CLCircularRegion {
-            sendNotification(title: "Enter Done", message: "\(circularRegion.identifier) You have entered the area.")
-        }
+        print("Did exit Region: \(region.identifier)")
+        guard region is CLCircularRegion else { return }
+        handleRegionEvent(region: region, didEnter: true)
     }
-    
-    
+    /// cikis area
     public func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
-        if let circularRegion = region as? CLCircularRegion {
-            sendNotification(title: "Exit Done", message: "\(circularRegion.identifier) You have left the area.")
-        }
+        print("Did Enter Region: \(region.identifier)")
+        guard region is CLCircularRegion else { return }
+        handleRegionEvent(region: region, didEnter: false)
     }
-    */
+    
     public func setConfig(config: GeofenceConfig){
         self.config = config
     }
@@ -90,6 +91,25 @@ public class GeofenceManager: NSObject, CLLocationManagerDelegate {
     public func fixedSize()-> Int{
         return self.config.fixedSize
     }
+    
+    /// Konum izin durumunu kontrol eder.
+      public func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+          switch manager.authorizationStatus {
+          case .authorizedAlways:
+              print("Authorized for always-on location updates.")
+          case .denied, .restricted:
+              print("Location access denied or restricted.")
+          case .authorizedWhenInUse, .notDetermined:
+              print("Insufficient location access permissions.")
+          default:
+              break
+          }
+      }
+
+      /// Konum isteği hatalarını ele alır.
+      public func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+          print("Location Manager Error: \(error.localizedDescription)")
+      }
     
     
 }
