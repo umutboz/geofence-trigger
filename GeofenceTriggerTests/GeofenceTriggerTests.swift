@@ -33,7 +33,7 @@ final class GeofenceTriggerTests: XCTestCase {
     
     func testConfigCheckFixedSize(){
         let sdk = Geofence.shared
-        let config = GeofenceConfig(fixedSize: 2)
+        let config = GeofenceConfig(fixedSize: 2, geofenceRadius: 100)
         sdk.setConfig(config: config)
         let locations = [
             LocationData(name: "Konum 1", coordinate: Coordinate(latitude: 37.7749, longitude: -122.4194)),
