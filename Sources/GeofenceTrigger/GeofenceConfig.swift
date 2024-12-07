@@ -8,4 +8,5 @@
 import Foundation
 public struct GeofenceConfig: Sendable{
     var fixedSize : Int = 5
+    var geofenceRadius : Double = 100
 }

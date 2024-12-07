@@ -48,7 +48,7 @@ public class GeofenceManager: NSObject, CLLocationManagerDelegate {
         for location in locations {
             let region = CLCircularRegion(
                 center: CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude),
-                radius: 100,  // 100 metre yarıçap
+                radius: self.config.geofenceRadius,  // default radius 100 metre yaricap
                 identifier: location.name
             )
             region.notifyOnEntry = true
@@ -57,7 +57,18 @@ public class GeofenceManager: NSObject, CLLocationManagerDelegate {
             locationManager.startMonitoring(for: region)
         }
     }
+    // enter Area ve notification gonderimi
+    // exit Area ve notification gonderimi
+    public func handleRegionEvent(region: CLRegion, didEnter: Bool) {
+        // Region identifier'ı al
+        let locationName = region.identifier
+        // Durumu belirle
+        let status = didEnter ? "Enter" : "Exit"
+        // Bildirim gönder
+        NotificationManager.shared.sendNotification(locationName: locationName, status: status)
+    }
 
+    /*
     // enter Area ve notification gonderimi
     public func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         if let circularRegion = region as? CLCircularRegion {
@@ -65,29 +76,13 @@ public class GeofenceManager: NSObject, CLLocationManagerDelegate {
         }
     }
     
-    // exit Area ve notification gonderimi
+    
     public func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
         if let circularRegion = region as? CLCircularRegion {
             sendNotification(title: "Exit Done", message: "\(circularRegion.identifier) You have left the area.")
         }
     }
-
-    // notification gonderimi
-    private func sendNotification(title: String, message: String) {
-        let content = UNMutableNotificationContent()
-        content.title = title
-        content.body = message
-        content.sound = .default
-
-        let request = UNNotificationRequest(
-            identifier: UUID().uuidString,
-            content: content,
-            trigger: nil
-        )
-
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-    }
-    
+    */
     public func setConfig(config: GeofenceConfig){
         self.config = config
     }
