@@ -7,10 +7,10 @@
 
 import Foundation
 public struct LocationData{
-    var name : String
-    var coordinate : Coordinate
+    public var name : String
+    public var coordinate : Coordinate
 }
-struct Coordinate{
-    var latitude: Double
-    var longitude: Double
+public struct Coordinate{
+    public var latitude: Double
+    public var longitude: Double
 }
