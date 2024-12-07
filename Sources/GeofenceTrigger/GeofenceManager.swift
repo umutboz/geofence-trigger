@@ -12,7 +12,7 @@ public class GeofenceManager: NSObject, CLLocationManagerDelegate {
     private let locationManager = CLLocationManager()
     private var regions: [CLCircularRegion] = []
     private var config : GeofenceConfig = GeofenceConfig(fixedSize: 5, geofenceRadius: 100)
-
+    
     public override init() {
         super.init()
         locationManager.delegate = self
@@ -20,6 +20,14 @@ public class GeofenceManager: NSObject, CLLocationManagerDelegate {
         //arka plan calismas icin aktif edildi
         locationManager.allowsBackgroundLocationUpdates = true
         locationManager.pausesLocationUpdatesAutomatically = false
+        
+        // NotificationCenter ile bildirimler için observer ekleniyor
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleGeofenceNotification(_:)),
+            name: NSNotification.Name("GeofenceNotification"),
+            object: nil
+        )
     }
     /// Geofence size kontrol eder.
     public func checkSize(size: Int) -> Bool{
@@ -69,7 +77,11 @@ public class GeofenceManager: NSObject, CLLocationManagerDelegate {
         // Durumu belirle
         let status = didEnter ? "Enter" : "Exit"
         // Bildirim gonder
-        NotificationManager.shared.sendNotification(locationName: locationName, status: status)
+        NotificationCenter.default.post(
+            name: NSNotification.Name("GeofenceNotification"),
+            object: nil,
+            userInfo: ["locationName": locationName, "status": status]
+        )
     }
     
     /// cikis area
@@ -94,23 +106,32 @@ public class GeofenceManager: NSObject, CLLocationManagerDelegate {
     }
     
     /// Konum izin durumunu kontrol eder.
-      public func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-          switch manager.authorizationStatus {
-          case .authorizedAlways:
-              print("Authorized for always-on location updates.")
-          case .denied, .restricted:
-              print("Location access denied or restricted.")
-          case .authorizedWhenInUse, .notDetermined:
-              print("Insufficient location access permissions.")
-          default:
-              break
-          }
-      }
-
-      /// Konum isteği hatalarını ele alır.
-      public func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-          print("Location Manager Error: \(error.localizedDescription)")
-      }
+    public func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        switch manager.authorizationStatus {
+        case .authorizedAlways:
+            print("Authorized for always-on location updates.")
+        case .denied, .restricted:
+            print("Location access denied or restricted.")
+        case .authorizedWhenInUse, .notDetermined:
+            print("Insufficient location access permissions.")
+        default:
+            break
+        }
+    }
     
+    /// Konum isteği hatalarını ele alır.
+    public func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Location Manager Error: \(error.localizedDescription)")
+    }
+    
+    // Geofence notification'lari handle eder
+       @objc private func handleGeofenceNotification(_ notification: Notification) {
+           if let userInfo = notification.userInfo as? [String: String],
+              let locationName = userInfo["locationName"],
+              let status = userInfo["status"] {
+               print("Geofence Notification: \(locationName) has \(status)")
+               /// TODO:
+           }
+       }
     
 }
