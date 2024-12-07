@@ -69,6 +69,14 @@ public class GeofenceManager: NSObject, CLLocationManagerDelegate {
             locationManager.startMonitoring(for: region)
         }
     }
+    // Geofencing izlemeyi durdur
+    public func stopGeofenceMonitoring() {
+        for region in regions {
+            locationManager.stopMonitoring(for: region)
+        }
+        regions.removeAll()
+        // Aktif bolgeler temizlenir
+    }
     
     /// Geofence bolgesi giris/cikis olaylarını işler.
     public func handleRegionEvent(region: CLRegion, didEnter: Bool) {
@@ -125,13 +133,13 @@ public class GeofenceManager: NSObject, CLLocationManagerDelegate {
     }
     
     // Geofence notification'lari handle eder
-       @objc private func handleGeofenceNotification(_ notification: Notification) {
-           if let userInfo = notification.userInfo as? [String: String],
-              let locationName = userInfo["locationName"],
-              let status = userInfo["status"] {
-               print("Geofence Notification: \(locationName) has \(status)")
-               /// TODO:
-           }
-       }
+    @objc private func handleGeofenceNotification(_ notification: Notification) {
+        if let userInfo = notification.userInfo as? [String: String],
+           let locationName = userInfo["locationName"],
+           let status = userInfo["status"] {
+            print("Geofence Notification: \(locationName) has \(status)")
+            /// TODO:
+        }
+    }
     
 }

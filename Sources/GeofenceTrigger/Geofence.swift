@@ -25,6 +25,11 @@ public class Geofence {
         }
     }
     
+    /// stop monitoring
+    open func stopGeofenceMonitoring(){
+        geofenceManager.stopGeofenceMonitoring()
+    }
+    
     open func currentLocation(completion: @escaping (CLLocation?) -> Void) {
         
     }
