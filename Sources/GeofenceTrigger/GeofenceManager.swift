@@ -11,7 +11,7 @@ import UserNotifications
 public class GeofenceManager: NSObject, CLLocationManagerDelegate {
     private let locationManager = CLLocationManager()
     private var regions: [CLCircularRegion] = []
-    private var config : GeofenceConfig = GeofenceConfig()
+    private var config : GeofenceConfig = GeofenceConfig(fixedSize: 5, geofenceRadius: 100)
 
     public override init() {
         super.init()
