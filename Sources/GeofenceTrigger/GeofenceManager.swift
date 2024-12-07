@@ -15,6 +15,7 @@ public class GeofenceManager: NSObject, CLLocationManagerDelegate {
 
     public override init() {
         super.init()
+        locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
         //arka plan calismas icin aktif edildi
         locationManager.allowsBackgroundLocationUpdates = true
