@@ -32,20 +32,115 @@ Use this space to show useful examples of how a project can be used. Additional 
 
 ## startGeofenceMonitoring
    ```swift
-   GeofenceSDK.shared.startGeofenceMonitoring(locations: [
-        ("Home", 37.7749, -122.4194),
-        ("Office", 37.7749, -122.4194),
-        ("School", 37.700, -122.4100)
-    ])
+   import GeofenceTrigger
+   
+       let predefinedLocations = [
+        LocationData(name: "Konum 1", coordinate: Coordinate(latitude: 37.331, longitude: -122.0307)),
+        LocationData(name: "Konum 2", coordinate: Coordinate(latitude: 37.33005, longitude: -122.028600))]
+    GeofenceSDK.shared.startGeofenceMonitoring(locations:predefinedLocations)
    ```
    
-## Contributing
+   ## startGeofenceMonitoring with Config, use radius, and location size
+   ```swift
+   import GeofenceTrigger
 
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+       let predefinedLocations = [
+        LocationData(name: "Konum 1", coordinate: Coordinate(latitude: 37.331, longitude: -122.0307)),
+        LocationData(name: "Konum 2", coordinate: Coordinate(latitude: 37.33005, longitude: -122.028600)),
+        LocationData(name: "Konum 3", coordinate: Coordinate(latitude: 37.33003, longitude: -122.02975)),
+        LocationData(name: "Konum 4", coordinate: Coordinate(latitude: 37.331049, longitude: -122.029149)),
+        LocationData(name: "Konum 5", coordinate: Coordinate(latitude: 51.509980, longitude: -0.133700))
+        
+     let geofence = Geofence.shared
+                //change raidus and location size
+                let config = GeofenceConfig(fixedSize: 5, geofenceRadius: 50)
+                geofence.setConfig(config: config)
+                geofence.startGeofenceMonitoring(locations: predefinedLocations)
+                
+   ```
+   
+## Recieve Notification
+Use "onRecieve" for SwiftUI 
+must be use "GeofenceNotification" key
+ ```swift
+ .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("GeofenceNotification"))) { notification in
+            if let userInfo = notification.userInfo,
+               let locationName = userInfo["locationName"] as? String,
+               let status = userInfo["status"] as? String {
+                notificationInfo += "\n Location: \(locationName), Status: \(status)"
+            }
+        }
+ ```  
+## Use Location Manager
 
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
+  ```swift
+  import GeofenceTrigger
+  
+     var locationManager = LocationManager()
+   
+   //swiftui view start location data start listen .onappear
+   .onAppear{
+            locationManager.checkLocationAuthorization()
+        }
+  ```
+```swift
+ VStack{
+                if let coordinate = locationManager.lastKnownLocation {
+                    Text("Latitude: \(coordinate.latitude)")
+                    Text("Longitude: \(coordinate.longitude)")
+                } else {
+                    Text("Unknown Location")
+                }
+    }
+ ```
 
+## Notification Management
+When the app is in the background or kill status, geofencing monitoring should continue and
+should be able to show notifications in case of enter or exit for specified locations.
+● When you click this notification (any geofence notification) that comes with the Gofencing
+process, the geofencing tracking feature will be disabled and all active geofence notifications
+should be cleared from the Notification Center .
+
+AppDelegate codes use
+
+```swift
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
+
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        UNUserNotificationCenter.current().delegate = self
+        
+        // Bildirim izinlerini istemek
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
+            if granted {
+                print("Notification permission granted")
+            } else {
+                print("Notification permission denied")
+            }
+        }
+        return true
+    }
+    
+    // Bildirim tıklandığında aksiyon
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        // Geofencing izlemeyi durdur
+        GeofenceTrigger.Geofence.shared.stopGeofenceMonitoring()
+        
+        // Aktif bildirimleri temizle
+        UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+        
+        completionHandler()
+    }
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        // Uygulama on planda tum bildirimleri temizle
+        UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+    }
+    func sceneWillEnterForeground(_ scene: UIScene) {
+        // Uygulama on planda tum bildirimleri temizle
+        UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+    }
+}
+
+ ```
 ## License
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
